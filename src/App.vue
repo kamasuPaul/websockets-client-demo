@@ -12,6 +12,14 @@ export default {
   name: 'App',
   components: {
     HelloWorld
+  },
+  mounted() {
+    console.log('App mounted.')
+    window.Echo.channel('top-up-status-updated')
+      .listen('.top-up-status-updated', (e) => {
+        console.log("event received")
+        console.log(e)
+      })
   }
 }
 </script>
