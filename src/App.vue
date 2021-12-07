@@ -32,10 +32,11 @@ export default {
     //listen to private channel
     console.log("topup id: " + this.topup.id)
     window.Echo.private(`topups.${this.topup.id}`)
-      .listen('.topup.updated', (e) => {
+      .listen('.topup-updated', (e) => {
         console.log("update topup event received")
         console.log(e)
-      })	 
+      }
+      )	 
   }
 }
 </script>
