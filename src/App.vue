@@ -17,6 +17,9 @@ export default {
         id: 1,
         amount: 0,
       },
+      batch: {
+        id: "950e8583-43c6-482d-9d1d-eea73ad4c26f",
+      }
       }
     },
   components: {
@@ -29,11 +32,21 @@ export default {
         console.log("event received")
         console.log(e)
       })
-    //listen to private channel
+    //listen to private channel topups
     console.log("topup id: " + this.topup.id)
     window.Echo.private(`topups.${this.topup.id}`)
       .listen('.topup-updated', (e) => {
         console.log("update topup event received")
+        console.log(e)
+      }
+    )
+
+
+    //listen to private channel bulk upload
+    console.log("batch id: " + this.batch.id)
+    window.Echo.private(`bulk-upload-channel.${this.batch.id}`)
+      .listen('.bulk-upload-updated', (e) => {
+        console.log("bulk upload event received")
         console.log(e)
       }
       )	 
